@@ -1,0 +1,24 @@
+
+<%= #home page 
+    #author: Zerocopter 
+%>
+<% a = 0 %>
+<% puts a 
+a = a + 3 
+%>
+<%= puts a %>
+<br><h1 class="col-lg-12 text-center">Users Questions and Answers </h1> <br>
+<div class="container text-center">  
+<% 'not shown' %>
+<%= form_with scope: :home, local: true do |form| %>
+<p>
+<%= form.label :Username %>
+<%= form.text_field :userName %> <br>
+<%= form.label :Password %>
+<%= form.password_field :password %> <br>
+<p>
+    <%= form.submit :Login, :class => 'btn btn-lg btn-primary' %>
+  </p>
+</p>
+<% end %>
+</div>

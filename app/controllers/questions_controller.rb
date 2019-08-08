@@ -1,14 +1,31 @@
 class QuestionsController < ApplicationController
-    def def new
-        
-    end
-  
-    def create
-        @question = Question.new(params.require(:question).permit(:title, :text, :user_id))
-         @question.save
-        redirect_to @question
+    def index
+        @questions = Question.all
     end
     def show
         @question = Question.find(params[:id])
     end
+    def new
+        @question = Question.new
+    end
+    def create
+        @question = Question.new(question_params)
+       
+        if @question.save
+          redirect_to @question
+        else
+          render 'new'
+        end
+      end
+      def check_for_back
+        if params[:commit] == "Back"
+          redirect_to questions_path
+        end
+      end
+      private
+        def question_params
+          params.require(:question).permit(:title, :text, :user_id)
+        end
+
+
 end

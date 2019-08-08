@@ -1,4 +1,4 @@
-
+<div class="container text-center"> 
 <h1>Submit a Question</h1>
 
 <%= form_with scope: :question, url: questions_path, local: true do |form| %>
@@ -13,6 +13,9 @@
   </p>
  
   <p>
-    <%= form.submit %>
+    <%= form.submit "Ask", :class => 'btn btn-lg btn-primary' %>
   </p>
 <% end %>
+<%= button_tag "Cancel",  :class => 'btn btn-lg btn-secondary' %>
+
+</div>

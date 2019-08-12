@@ -1,7 +1,19 @@
-<div class="container text-center"> 
+<div id="new-question" class="container text-center"> 
 <h1>Submit a Question</h1>
-
 <%= form_with scope: :question, url: questions_path, local: true do |form| %>
+  <% if @question.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= pluralize(@question.errors.count, "error") %> prohibited
+      this question from being saved:
+    </h3>
+    <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -16,6 +28,6 @@
     <%= form.submit "Ask", :class => 'btn btn-lg btn-primary' %>
   </p>
 <% end %>
-<%= button_tag "Cancel",  :class => 'btn btn-lg btn-secondary' %>
+<%= link_to "Cancel", questions_path,  :class => 'btn btn-lg btn-secondary' %>
 
 </div>

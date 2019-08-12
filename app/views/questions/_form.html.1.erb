@@ -1,0 +1,42 @@
+<div id='frm' class="modal fade text-center" role="dialog"> 
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Submit a Question</h2>
+</div>
+<%= form_with model: question, local: true do |form| %>
+    <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@question.errors.count, "error") %> prohibited
+        this question from being saved:
+      </h2>
+      <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="modal-body">
+    <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text, size: "40x5" %>
+  </p>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <div class="modal-footer">
+  <p>
+    <%= form.submit "Ask", :class => 'btn btn-lg btn-primary' %>
+    <%= link_to questions_path do %>
+        <button class='btn btn-lg btn-secondary' >Cancel</button>
+    <% end %>
+  </p></div>
+<% end %>
+</div></div></div>
+</div>

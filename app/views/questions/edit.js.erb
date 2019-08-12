@@ -1,2 +1,4 @@
-$('#new-question a').parent().html("<%= j render 'form', question: @question %>");
+$('#frm').remove();
+$('#new-question a').parent().append("<%= j render 'form', question: @question %>");
 $('#frm').modal('show');
+

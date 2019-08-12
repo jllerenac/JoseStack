@@ -1,25 +1,15 @@
 div class="container text-center"
   div class=" text-right"
+    = link_to 'Edit Profile ', edit_user_registration_path
     = link_to 'Logout', destroy_user_session_path, method: :delete
   div class=" text-center"
     h1 Listing Questions
     div id="new-question"
       = link_to new_question_path, remote: true do 
         button class='btn btn btn-primary' New Question
-    table border=1
+    table id ='qta' border=1
       tr
         th Title
         th Question
         th Asked by
-      - @questions.each do |question| 
-        tr
-          td = question.title
-          td = question.text
-          td = current_user.id == question.user_id ? "YOU" : "OTHER"
-          td = link_to question_path(question), remote: true do
-            button class='btn btn-sm btn-primary' Show Answers
-          td = link_to edit_question_path(question), remote: true do 
-            button class='btn btn-sm btn-primary' Edit
-          td = link_to question_path(question), method: :delete, data: { confirm: 'Are you sure?' } do
-            button class='btn btn-sm btn-primary' Delete Me
-    div id="new-question-form" style="display:none;" class="modal-dialog"
+      = render @questions        

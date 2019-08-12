@@ -14,24 +14,25 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
     def create
- #       @question = Question.new(question_params)
       @question = Question.create(question_params)
       respond_to do |f|
-        f.js { render 'new' }
+        if @question.save
+          f.js
+        else
+          format.json { render json: @question.errors, status: :unprocessable_entity  }
+        end
       end
-  #      if @question.save
-  #        redirect_to questions_path
-  #      else
-  #        redirect_to questions_path
-  #      end
     end
+ 
     def update
       @question = Question.find(params[:id])
- 
-      if @question.update(question_params)
-        redirect_to questions_path
-      else
-        render 'edit'
+      respond_to do |f|
+        @ide = @question.id 
+        if @question.update(question_params)
+          f.js
+        else
+          format.json { render json: @question.errors, status: :unprocessable_entity  }
+        end
       end
     end
     def destroy

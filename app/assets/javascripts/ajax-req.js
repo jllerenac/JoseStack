@@ -12,17 +12,4 @@ function a_req()
         alert('Title has to be at least 5 characters long');
         return false;  
     }
-    $.ajax(
-        {
-        type : 'POST',
-        data : 
-        {
-            t: t,b: b},
-        url : ('questions'),
-        success :   function(result)
-        {
-            Alert('Datos ingresados','AVISO');
-        }
-        });
-    return false;
 }

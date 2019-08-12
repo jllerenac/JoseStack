@@ -3,7 +3,7 @@ div id='frm' class="modal fade text-center" role="dialog"
     div class="modal-content"
       div class="modal-header"
         h2 Submit a Question
-      = form_for @question do |form| 
+      = form_with model: @question do |form| 
         - if @question.errors.any? 
           div id="error_explanation"
             h2 = pluralize @question.errors.count, "error" 
@@ -23,7 +23,4 @@ div id='frm' class="modal fade text-center" role="dialog"
           = form.hidden_field :user_id, :value => current_user.id 
         div class="modal-footer"
           button class='btn btn-lg btn-primary' onclick="return a_req()" ASK
-          = link_to questions_path do 
-            button class='btn btn-lg btn-secondary' Cancel
-/ = form.submit "Ask", :class => 'btn btn-lg btn-primary' 
-/      = form_with model: question, local: true do |form| 
+          button class='btn btn-lg btn-secondary' onclick="$('#frm').modal('hide'); return false;" Cancel

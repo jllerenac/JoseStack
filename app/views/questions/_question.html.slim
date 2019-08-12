@@ -1,0 +1,11 @@
+tr
+    td style='display:none' = question.id
+    td = question.title 
+    td = question.text
+    td = current_user.id == question.user_id ? "YOU" : "OTHER"
+    td = link_to question_path(question), remote: true do
+        button class='btn btn-sm btn-primary' Show Answers
+    td = link_to edit_question_path(question), remote: true do 
+        button class='btn btn-sm btn-primary' Edit
+    td = link_to question_path(question), method: :delete, data: { confirm: 'Are you sure?' } do
+        button class='btn btn-sm btn-primary' Delete Me

@@ -1,0 +1,20 @@
+$('#frm').modal('hide');
+
+// in this part I skip redirect and any kind of reload
+// the only thing I do after updating is to update the corresponding row
+// because this is done when update already happened on server 
+// If any data is altered on frontend to cheat the row, it can happen only on front end
+// but when reloading data will be the way is supposed to work 
+
+var updatedId = <%= @ide %> 
+$("#qta tr:gt(0)").each(function () 
+    {
+        var this_row = $(this);
+        var currentId = this_row.find('td:eq(0)').text();
+        if (updatedId == currentId)
+            {
+                this_row.find('td:eq(1)').text($('#t').val());
+                this_row.find('td:eq(2)').text($('#b').val());
+            }
+    });
+alert('Question Updated');

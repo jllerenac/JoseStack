@@ -1,0 +1,29 @@
+div id='frm' class="modal fade text-center" role="dialog" 
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h2 Submit a Question
+      = form_for @question do |form| 
+        - if @question.errors.any? 
+          div id="error_explanation"
+            h2 = pluralize @question.errors.count, "error" 
+              | prohibited this question from being saved
+            ul
+              - @question.errors.full_messages.each do |msg|
+                li = msg
+        div class="modal-body"
+          p
+            = form.label :title 
+            br
+            = form.text_field :title, id: 't'
+          p
+            = form.label :text 
+            br
+            = form.text_area :text, size: "40x5", id: 'b'
+          = form.hidden_field :user_id, :value => current_user.id 
+        div class="modal-footer"
+          button class='btn btn-lg btn-primary' onclick="return a_req()" ASK
+          = link_to questions_path do 
+            button class='btn btn-lg btn-secondary' Cancel
+/ = form.submit "Ask", :class => 'btn btn-lg btn-primary' 
+/      = form_with model: question, local: true do |form| 

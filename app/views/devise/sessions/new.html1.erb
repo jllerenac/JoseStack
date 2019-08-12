@@ -1,10 +1,10 @@
 <%= #home page 
     #author: Zerocopter 
-%>
+   %>
 
 <div class="container text-center"> 
 <h2>Users Questions and Answers</h2>
-<%= form_for(resource, as: resource_name, url: "questions" do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f|  %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

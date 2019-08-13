@@ -1,0 +1,17 @@
+/ this div below is the form for submitting answers 
+div id='afrm' class="modal fade text-center" role="dialog" 
+  div class="modal-dialog"
+    div class="modal-content"
+      div class="modal-header"
+        h2 Submit an Answer
+      = form_with model: @answer do |form| 
+        div class="modal-body"
+          p
+            = form.label :comment 
+            br
+            = form.text_area :comment, size: "40x5", id: 'b'
+          = form.text_field :user_id, :value => current_user.id, id: 'uid'
+          = form.text_field :qid, id: 'qid'
+        div class="modal-footer"
+          button class='btn btn-lg btn-primary' onclick="return save_answer()" Answer
+          button class='btn btn-lg btn-secondary' onclick="$('#afrm').modal('hide'); return false;" Cancel

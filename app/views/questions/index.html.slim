@@ -13,3 +13,6 @@ div class="container text-center"
         th Question
         th Asked by
       = render @questions        
+div id="new-answer"
+        = link_to new_answer_path, remote: true do 
+        

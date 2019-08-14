@@ -1,13 +1,13 @@
-- client = User.find(question.user_id)
+- askedBy = User.find(question.user_id)
 tr
     td style='display:none' = question.id
     td = question.title 
     td = question.text
-    td = current_user.id == question.user_id ? "YOU" : client.name
+    td = current_user.id == question.user_id ? "YOU" : askedBy.name
     td = link_to new_answer_path, remote: true do 
-        button class='btn btn-sm btn-primary' onclick='return submit_answer(#{question.id});' Give Answer
-    td 
-        button class='btn btn-sm btn-primary' onclick="return query_answer('#{question.id}');" Show Answers
+        button class='btn btn-sm btn-primary' onclick='return set_qid(#{question.id});' Give Answer
+    td = link_to answers_path, remote: true do
+        button class='btn btn-sm btn-primary' onclick='return set_qid(#{question.id});' Show Answers
     td = link_to edit_question_path(question), remote: true do 
         button class='btn btn-sm btn-primary' Edit
     td = link_to question_path(question), method: :delete, data: { confirm: 'Are you sure?' } do

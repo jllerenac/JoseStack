@@ -1,3 +1,4 @@
+var q_Id = "" ;
 function a_req()
 {
     var b = $('#b').val();
@@ -13,31 +14,21 @@ function a_req()
         return false;  
     }
 }
-// this function will only show the form for submitting answers
-function submit_answer(qid)
+// this function will only assing the question id to the global variable
+// so in create.js.erb that value will be assigned to the hidden field
+// I dont use this value in render because question id is different for each row
+function set_qid(qId)
 {
-    $('#qid').val(qid);
-    var q_id = document.getElementById('qid');
- //   var s = document.getElementById(variable);
-  //          s.value = "new value";
-    alert(q_id) ;
-    $('#qid').val(q_id);
-    alert( $('#qid').val());
+ q_Id = qId ;
 }
+
+// this function is only to validate at client level
 function save_answer()
 {
-  /*  $.ajax
-    ({
-        type: "POST",
-        url: ('answers#create'),
-        data : {comment: $('#b').val(), user_id: $('#uid').val(), qid: $('#qid').val()},
-        success: function(msg)
-        {
-            alert('Answer Saved','Alert');
-        },
-        error: function()
-        {
-            alert("Error");
-        }
-    });*/
+    var a = $('#a').val();
+    if (a.length === 0)
+    {
+        alert('No empty values');
+        return false;  
+    }
 }

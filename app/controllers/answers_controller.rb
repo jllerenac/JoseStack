@@ -1,13 +1,26 @@
 class AnswersController < ApplicationController
     def index
- #       @answers = Question.find(params[:qid])
+        @answers = Answer.all
+    end
+    def new
+        @answer = Answer.new
     end
     def create
-#        @question = Question.find(params[:question_id])
-#        @answer = @question.answers.create(answer_params)
-#        redirect_to question_path(@question)
+        @answer = Answer.create(answer_params)
+          respond_to do |f|
+          if @answer.save
+            f.js
+          else
+            format.json { render json: @answer.errors, status: :unprocessable_entity  }
+          end 
+        end
     end
-     
+    def queryByQId
+      @answers = Answer.where(qid: 1)
+      respond_to do |f|
+        f.js
+      end 
+    end 
     private
       def answer_params
       params.require(:answer).permit(:comment, :user_id, :qid)

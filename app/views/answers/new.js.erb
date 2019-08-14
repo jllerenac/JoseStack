@@ -1,4 +1,4 @@
-
-$('#frm').remove();
-$('#new-answer a').parent().append("<%= j render 'form', locals: { qid: question.id } ,answer: @answer %>");
+$('#afrm').remove();
+$('#new-answer a').parent().append("<%= j render 'form', answer: @answer %>");
+$('#qid').val(q_Id);
 $('#afrm').modal('show');

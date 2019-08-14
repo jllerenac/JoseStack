@@ -1,0 +1,9 @@
+- answeredBy = User.find(answer.user_id)
+tr
+    td style='display:none' = answer.id
+    td = answer.comment
+    td = current_user.id == answer.user_id ? "YOU" : answeredBy.name
+    td = link_to edit_answer_path(answer), remote: true do 
+        button class='btn btn-sm btn-primary' Edit
+    td = link_to answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do
+        button class='btn btn-sm btn-primary' Delete Me

@@ -1,0 +1,11 @@
+var deletedId = <%= @qdeId %> 
+$("#qta tr:gt(0)").each(function () 
+    {
+        var this_row = $(this);
+        var currentId = this_row.find('td:eq(0)').text();
+        if (deletedId == currentId)
+            {
+                this_row.find('td').remove();
+            }
+    });
+alert('Question Deleted');

@@ -1,0 +1,13 @@
+$('#afrm').modal('hide');
+var updatedId = <%= @naId %> 
+$("#ata tr:gt(0)").each(function () 
+    {
+        var this_row = $(this);
+        var currentId = this_row.find('td:eq(0)').text();
+        if (updatedId == currentId)
+            {
+                this_row.find('td:eq(1)').text($('#a').val());
+            }
+    });
+alert('Answer Updated');
+

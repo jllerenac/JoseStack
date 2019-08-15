@@ -32,3 +32,19 @@ function save_answer()
         return false;  
     }
 }
+function query_answers()
+{
+    $.ajax(
+        {
+            type : 'POST',
+            data : 
+            {
+                qId: q_Id
+            },
+            url : ('/answers/queryByQId'),
+            success :   function(result)
+            {
+            //    alert('OK');
+            }
+        });
+}

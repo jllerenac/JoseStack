@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
         end
       end
     end
- 
     def update
       @question = Question.find(params[:id])
       respond_to do |f|
@@ -37,8 +36,8 @@ class QuestionsController < ApplicationController
     end
     def destroy
       @question = Question.find(params[:id])
+      @qdeId = @question.id 
       @question.destroy
-      redirect_to questions_path
     end
     def check_for_back
       if params[:commit] == "Back"

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, alert: 'you must sign in first!'
-  respond_to :html, :js
+  respond_to :html, :js, :json
     def index
         @questions = Question.order('user_id').all
     end

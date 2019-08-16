@@ -9,3 +9,8 @@ two:
   title: MyString
   text: MyText
   user_id: 1
+
+three:
+  title: jll
+  text: MyText
+  user_id: 1

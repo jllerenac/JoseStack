@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
       @answer = Answer.find(params[:id])
       respond_to do |f|
         @naId = @answer.id 
-        if @answer.update(answer_params)
+        if @answer.update_columns(comment: params[:answer][:comment])
           f.js
         else
           format.json { render json: @answer.errors, status: :unprocessable_entity  }

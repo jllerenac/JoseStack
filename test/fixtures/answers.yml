@@ -1,16 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  text: MyText
+  comment: Jose1
   user_id: 1
-
+  qid: 1
 two:
-  title: MyString
-  text: MyText
+  comment: Jose2
   user_id: 1
-
+  qid: 1
 three:
-  title: jll
-  text: MyText
+  comment: Jose3
   user_id: 1
+  qid: 1

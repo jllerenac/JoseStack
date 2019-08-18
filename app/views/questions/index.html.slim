@@ -1,15 +1,31 @@
-div class="container text-center"
-  div class=" text-right"
-    = link_to 'Edit Profile ', edit_user_registration_path
-    = link_to 'Logout', destroy_user_session_path, method: :delete
-  div class=" text-center"
-    h1 Listing Questions
-    div id="new-question"
-      = link_to new_question_path, remote: true do 
-        button class='btn btn btn-primary' New Question
-    table id ='qta' border=1
+/ First time the page loads I show the current user's answers summary
+/ its the only time it does this, after submitting an answer or querying by question it will 
+/ only show the answers regarding the specific question 
+
+- @answers = Answer.where(user_id: current_user.id)
+div class="container text-right"
+  = link_to 'Edit Profile ', edit_user_registration_path
+  = link_to 'Logout', destroy_user_session_path, method: :delete
+div id="new-question" class="text-center"
+    = link_to new_question_path, remote: true do 
+      button class='btn btn btn-primary' New Question
+div class="container text-center col-sm-8" style="display: inline-block" 
+  h1 Listing Questions
+  table id ='qta' border=1
+    tr
+      th Title
+      th Question
+      th Asked by
+    = render @questions    
+div id="user-answers" class=" col-sm-4" style="display: inline-block"
+  h1 Answers   
+  table id ='ata' border=1
+    thead
       tr
-        th Title
-        th Question
-        th Asked by
-      = render @questions        
+        th Comment
+        th Answered by
+    tbody 
+      = render @answers
+div id="new-answer"
+        = link_to new_answer_path, remote: true do 
+

@@ -12,9 +12,9 @@ gem 'rails', '~> 5.1.7'
 gem 'sqlite3'
 gem 'slim'
 # Use Puma as the app server
-# gem 'puma', '~> 3.7'
+ gem 'puma', '~> 3.7'
 # jllerena: I changed here to use webrick as the default web server 
-gem 'webrick', '~> 1.4'
+#gem 'webrick', '~> 1.4'
 # jllerena: I am using devise for authentication 
 gem 'devise', '~> 4.6'
 # Use SCSS for stylesheets
@@ -43,7 +43,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.53', '>= 2.53.4'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :questions
+  resources :answers
+   
   devise_for :users
   # I am setting the home page
 
@@ -13,15 +15,11 @@ Rails.application.routes.draw do
     
   end
 
- # get 'questions/index'
   get 'questions/new'
-  get 'pages/home'
   get 'devise/sessions'
-  get 'pages/questions'
   get 'users/sign_in'
   get 'users/sign_out'
-  get 'pages/summary'
-
+  post 'answers/queryByQId'
   
    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

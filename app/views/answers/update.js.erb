@@ -1,0 +1,19 @@
+// As in questions after database update, application proceeds to update table row
+// so it wont be necesary to refresh the whole table
+// the scope of the application does not cover validating that a user can only
+// edit its own question or anwers, this is open and anybody can modify or delete
+// any question or answer
+
+$('#afrm').modal('hide');
+var updatedId = <%= @naId %> 
+$("#ata tr:gt(0)").each(function () 
+    {
+        var this_row = $(this);
+        var currentId = this_row.find('td:eq(0)').text();
+        if (updatedId == currentId)
+            {
+                this_row.find('td:eq(1)').text($('#a').val());
+            }
+    });
+alert('Answer Updated');
+

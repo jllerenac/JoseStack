@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# rspec gem is only use to authenticate in testing controllers
 class QuestionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   def setup

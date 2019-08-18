@@ -1,3 +1,9 @@
+// this function deletes the deleted row
+// with this the idea is to not refresh the whole table
+// having the id, its enough only to delete the row
+// this is done already knowing that DB transaction was succesful
+// so there is no risk of any lose of integrity
+
 var deletedId = <%= @qdeId %> 
 $("#qta tr:gt(0)").each(function () 
     {

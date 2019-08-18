@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, alert: 'you must sign in first!'
   respond_to :html, :js, :json
+  # ajax is being used, thats why there is no redirect
+  # URLs like 'questions/1/edit' wont work, because everything is done with Ajax
     def index
         @questions = Question.order('user_id').all
     end

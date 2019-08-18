@@ -1,3 +1,7 @@
+// removes the modal even if its not present so it gets cleaned
+// renders the form that will be shown in the modal
+// question id is assign to the hidden field in the form
+
 $('#afrm').remove();
 $('#new-answer a').parent().append("<%= j render 'form', answer: @answer %>");
 $('#qid').val(q_Id);

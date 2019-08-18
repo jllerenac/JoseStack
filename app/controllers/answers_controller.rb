@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, alert: 'you must sign in first!'
   respond_to :html, :js
+  # ajax is being used, thats why there is no redirect
+  # URLs like 'answers/new' wont work, because everything is done with Ajax
     def index
         @answers = Answer.all
     end
@@ -39,6 +41,8 @@ class AnswersController < ApplicationController
       @deId = @answer.id 
       @answer.destroy
     end
+    # this is the action for querying answers, which dont have its own index page
+    # because application shows and performs everything on root page
     def queryByQId
       @answers = Answer.where(qid: params[:qId])
       respond_to do |f|

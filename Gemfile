@@ -16,7 +16,7 @@ gem 'slim'
 # jllerena: I changed here to use webrick as the default web server 
 #gem 'webrick', '~> 1.4'
 # jllerena: I am using devise for authentication 
-gem 'devise', '~> 4.6'
+gem 'devise', '~> 4.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
